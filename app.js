@@ -73,32 +73,13 @@ export default (express, bodyParser, fs, crypto, http, mongodb, path, cors, pupp
         
         })
         .get('/login/', (req, res) => res.send(author))
-        .get('/code/', (req, res) => fs.createReadStream(import.meta.url.substring(7)).pipe(res))
-        
-        .get('/test/', async (req, res) => {
-        const { URL } = req.query
-        const browser = await puppeteer.launch({
-            headless: true,
-            args: [
-                '--no-sandbox',
-                '--disable-setuid-sandbox',
-            ],
-        })
-        const page = await browser.newPage()
-        await page.goto(URL)
-        await page.click('#bt')
-        const value = await page.evaluate(async () => {
-            const input = document.getElementById('inp')
-            return input.value
-        })
-        res.send(value)
-        })
-            
+        .get('/code/', (req, res) => fs.createReadStream(import.meta.url.substring(7)).pipe(res))   
         .get('/sha1/:input/', (req, res) => {
             const { input } = req.params;
             res.setHeader('content-type', 'text/plain');
             res.send(crypto.createHash('sha1').update(input).digest('hex'));
         })
+    
         .get('/req', (req, res) => {
             res.setHeader('content-type', 'text/plain');
 
@@ -120,6 +101,25 @@ export default (express, bodyParser, fs, crypto, http, mongodb, path, cors, pupp
             }).on('error', (e) => {
                 console.error(`Got error: ${e.message}`);
             });
+            
+             .get('/test/', async (req, res) => {
+        const { URL } = req.query
+        const browser = await puppeteer.launch({
+            headless: true,
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+            ],
+        })
+        const page = await browser.newPage()
+        await page.goto(URL)
+        await page.click('#bt')
+        const value = await page.evaluate(async () => {
+            const input = document.getElementById('inp')
+            return input.value
+        })
+        res.send(value)
+        })
 
         })
         .post('/req', (req, res) => {
