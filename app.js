@@ -101,27 +101,7 @@ export default (express, bodyParser, fs, crypto, http, mongodb, path, cors, pupp
             }).on('error', (e) => {
                 console.error(`Got error: ${e.message}`);
             });
-            
-             .get('/test/', async (req, res) => {
-        const { URL } = req.query
-        const browser = await puppeteer.launch({
-            headless: true,
-            args: [
-                '--no-sandbox',
-                '--disable-setuid-sandbox',
-            ],
-        })
-        const page = await browser.newPage()
-        await page.goto(URL)
-        await page.click('#bt')
-        const value = await page.evaluate(async () => {
-            const input = document.getElementById('inp')
-            return input.value
-        })
-        res.send(value)
-        })
-
-        })
+})
         .post('/req', (req, res) => {
             res.setHeader('content-type', 'text/plain');
 
