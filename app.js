@@ -1,7 +1,7 @@
 export default (express, puppeteer) => {
     
     const app = express();
-    const author = 'itmo282167'
+    const author = 'itmo287666'
 
     app.use(function (req, res, next) {
         res.setHeader('Content-Type', 'text/plain')
