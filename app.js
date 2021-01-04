@@ -17,7 +17,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
   app.use(cors());
   app.options('*', cors());
 
-  app.use('/login/', (req, res) => res.send('itmo286137'));
+  app.use('/login/', (req, res) => res.send('itmo287666'));
 
   app.use('/code/', (req, res) => {
     let readStream = createReadStream(import.meta.url.substring(7));
