@@ -98,6 +98,6 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
     res.send(result)
   });
 
-  app.all('*', (req, res) => res.send('itmo286137'));
+  app.all('*', (req, res) => res.send('itmo287666'));
   return app;
 }
