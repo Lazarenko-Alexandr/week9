@@ -54,7 +54,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
   });
 
 
-    app.get('/wordpress/wp-json/wp/v2/posts/1', (req, res) => res.status(200).json({title: {id: 1, rendered: "itmo286137"}}))
+    app.get('/wordpress/wp-json/wp/v2/posts/1', (req, res) => res.status(200).json({title: {id: 1, rendered: "itmo287666"}}))
     app.post('/render/', (req, res) => {
       const {random2, random3} = req.body;
 
